@@ -21,6 +21,9 @@ int obstacleX = 15;
 int score = 0;
 bool dinoFrame = false; 
 
+// Edge detection state
+bool lastButtonState = false; 
+
 // Custom sprites (5x8 pixel art)
 byte dinoCorsa1[8] = { B00111, B00101, B00111, B10110, B11111, B01010, B01010, B00000 };
 byte dinoCorsa2[8] = { B00111, B00101, B00111, B10110, B11111, B01010, B00100, B00010 };
@@ -40,6 +43,10 @@ void setup() {
 void loop() {
   unsigned long currentMillis = millis();
   bool buttonPressed = (digitalRead(buttonPin) == HIGH);
+  
+  // Edge detection: true only on the rising edge
+  bool justPressed = (buttonPressed && !lastButtonState);
+  lastButtonState = buttonPressed;
 
   switch (state) {
     
@@ -50,7 +57,7 @@ void loop() {
       lcd.setCursor(0, 1);
       lcd.print(" Press to Start ");
       
-      if (buttonPressed) {
+      if (justPressed) { 
         state = PLAYING;
         score = 0;
         obstacleX = 15;
@@ -62,20 +69,26 @@ void loop() {
 
     // --- GAMEPLAY ---
     case PLAYING:
-      // 1. Non-blocking input read
-      if (buttonPressed && !isJumping) {
+      // 1. Jump input
+      if (justPressed && !isJumping) {
         isJumping = true;
         playerY = 0; 
         jumpStartTime = currentMillis;
         tone(buzzerPin, 800, 50); 
+        
+        // FIX: Clear lower row ghosting immediately
+        lcd.setCursor(1, 1);
+        lcd.print(" ");
       }
 
       // 2. Gravity logic
       if (isJumping && (currentMillis - jumpStartTime > jumpDuration)) {
         isJumping = false;
         playerY = 1; 
+        
+        // FIX: Clear upper row ghosting on landing
         lcd.setCursor(1, 0);
-        lcd.print(" "); // Clear ghosting
+        lcd.print(" ");
       }
 
       // 3. Rendering and physics (per frame)
@@ -83,7 +96,7 @@ void loop() {
         lastFrameTime = currentMillis;
 
         lcd.setCursor(obstacleX, 1);
-        lcd.print(" "); // Erase previous obstacle
+        lcd.print(" "); 
 
         obstacleX--;
         if (obstacleX < 0) {
@@ -127,9 +140,9 @@ void loop() {
       lcd.setCursor(0, 1);
       lcd.print("Score: ");
       lcd.print(score);
-      lcd.print("       "); 
+      lcd.print("       ");
       
-      if (buttonPressed) {
+      if (justPressed) { 
         state = MENU;
         delay(300); // Reset debounce
       }
