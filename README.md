@@ -7,7 +7,7 @@ A real-time T-Rex runner game on a 16x2 LCD using Tinkercad and finite state mac
 [Arduino-LCD-Runner-Rex.pdf](https://github.com/user-attachments/files/31507287/Arduino-LCD-Runner-Rex.pdf)
 
 ## Try it
-**[Click here to play on Tinkercad](https://www.tinkercad.com/things/4Pulck0YnV3-arduino-lcd-runner?sharecode=jkR8yP5rBM00yob9BvyXANDNnDqQwadcRK0Yd21WSOQ)**
+**[Click here to play on Tinkercad](https://www.tinkercad.com/things/8Cz8V4lfKaN-copy-of-copy-of-arduino-lcd-runner/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=HI1scAfF8RYG_Ig0F7XuYrimkrqoOwXKhAWDeAl6Q6U)**
 
 ## Hardware Requirements
 1x Arduino Uno R3
