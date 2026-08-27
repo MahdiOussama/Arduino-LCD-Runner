@@ -1,9 +1,10 @@
 # Arduino-LCD-Runner
 A real-time T-Rex runner game on a 16x2 LCD using Tinkercad and finite state machines
-<img width="1920" height="814" alt="Arduino-LCD-Runner" src="https://github.com/user-attachments/assets/98ab19e0-8bbd-4ff5-b13d-cbc96e2f4158" />
+<img width="1103" height="793" alt="image" src="https://github.com/user-attachments/assets/6e0266a3-6063-47c5-8065-b04230696b8f" />
+
 
 ## Schematics
-[Arduino-LCD-Runner.pdf](https://github.com/user-attachments/files/31366811/Arduino-LCD-Runner.pdf)
+[Arduino-LCD-Runner-Rex.pdf](https://github.com/user-attachments/files/31507287/Arduino-LCD-Runner-Rex.pdf)
 
 ## Try it
 **[Click here to play on Tinkercad](https://www.tinkercad.com/things/4Pulck0YnV3-arduino-lcd-runner?sharecode=jkR8yP5rBM00yob9BvyXANDNnDqQwadcRK0Yd21WSOQ)**
@@ -13,13 +14,13 @@ A real-time T-Rex runner game on a 16x2 LCD using Tinkercad and finite state mac
 
 1x 16x2 LCD Display
 
-1x Pushbutton
+2x Pushbutton
 
 1x Piezo Buzzer
 
 1x 10 kΩ Potentiometer
 
-1x 10 kΩ Resistor
+2x 10 kΩ Resistor
 
 1x 220 Ω Resistor
 
